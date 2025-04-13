@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Love Question</title>
+  <style>
+    body {
+      background-color: #ffe6f0;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    #questionContainer {
+      position: relative;
+      width: 400px;
+      height: 300px;
+      margin: 100px auto;
+      background-color: #fff0f5;
+      border-radius: 20px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+      padding-top: 50px;
+    }
+
+    #questionContainer p {
+      font-size: 24px;
+      margin-bottom: 50px;
+    }
+
+    #yesBtn, #noBtn {
+      position: absolute;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    #yesBtn {
+      left: 80px;
+      top: 150px;
+      background-color: #ff66a3;
+      color: white;
+    }
+
+    #noBtn {
+      left: 220px;
+      top: 150px;
+      background-color: #999;
+      color: white;
+    }
+
+    #heartLoader {
+      display: none;
+      margin-top: 20px;
+      font-size: 24px;
+      color: #ff3399;
+    }
+
+    #resultContainer {
+      display: none;
+      margin-top: 50px;
+    }
+
+    #gifResult {
+      width: 150px;
+      height: auto;
+    }
+
+    #resultContainer p {
+      font-size: 24px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="questionContainer">
+    <p>Надад хайртай юу?</p>
+    <button id="yesBtn">Тийм</button>
+    <button id="noBtn">Үгүй</button>
+  </div>
+
+  <div id="heartLoader">Мэдэж байсийн...</div>
+
+  <div id="resultContainer">
+    <img id="gifResult" src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExbXlocWNuYmFva2x1NDBrZGJhNzZteDQzeHJmOTdnbTk1c29od3VsdiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l4FGpP4lxGGgK5CBW/giphy.gif" alt="Hug GIF" />
+    <p>I knew it <span style="font-size: 24px;">😍</span>!</p>
+  </div>
+
+  <script>
+    const noBtn = document.getElementById("noBtn");
+    const yesBtn = document.getElementById("yesBtn");
+    const questionContainer = document.getElementById("questionContainer");
+    const resultContainer = document.getElementById("resultContainer");
+    const heartLoader = document.getElementById("heartLoader");
+    const gifResult = document.getElementById("gifResult");
+
+    noBtn.addEventListener("mouseover", () => {
+      const newX = Math.floor(Math.random() * (questionContainer.offsetWidth - 100));
+      const newY = Math.floor(Math.random() * (questionContainer.offsetHeight - 50));
+
+      noBtn.style.left = `${newX}px`;
+      noBtn.style.top = `${newY}px`;
+    });
+
+    yesBtn.addEventListener("click", () => {
+      heartLoader.style.display = "block";
+      setTimeout(() => {
+        heartLoader.style.display = "none";
+        resultContainer.style.display = "block";
+        gifResult.play();
+      }, 2000);
+    });
+  </script>
+
+</body>
+</html>
